@@ -1,4 +1,4 @@
-Projeto Simples desenvolvido para a Primeira avaliação da materia de desenvolvimento mobile utilizando React Native com TypeScript, o projeto era de tema livre então decidi criar uma especie de aplicativo auxiliar de um jogo que é um dos melhores que joguei nos ultimos anos. Path of Exile 2, gostei bastante do resultado já que foi meu primeiro projeto no React Native, fui atrás de muitas coisas por fora dos conteudos da aulas para atingir um pouco do visual que eu queria para o projeto.
+Projeto Simples desenvolvido para a Segunda  avaliação da materia de desenvolvimento mobile utilizando React Native com TypeScript, o projeto era de tema livre então decidi criar uma especie de aplicativo auxiliar de um jogo que é um dos melhores que joguei nos ultimos anos. Path of Exile 2, gostei bastante do resultado já que foi meu primeiro projeto no React Native, fui atrás de muitas coisas por fora dos conteudos da aulas para atingir um pouco do visual que eu queria para o projeto.
 
 
 -Rodando o Projeto:
