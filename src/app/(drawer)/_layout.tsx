@@ -8,6 +8,7 @@ export default function DrawerLayout() {
         <Drawer.Screen name="atlas" options={{ title: 'Atlas' }} />
         <Drawer.Screen name="menu" options={{ title: 'Menu' }} />
         <Drawer.Screen name="metabuilds" options={{ title: 'Builds' }} />
+        <Drawer.Screen name="characters" options={{ title: "Personagens" }} />
       </Drawer>
     </GestureHandlerRootView>
   );
