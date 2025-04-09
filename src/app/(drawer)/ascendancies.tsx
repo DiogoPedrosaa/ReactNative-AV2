@@ -1,22 +1,104 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, FlatList, ImageBackground, TextInput, TouchableOpacity } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 const ascendancies = [
+  {
+    name: "Acolyte of Chayula",
+    class: "Monk",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Chayula.webp"),
+  },
   {
     name: "Amazon",
     class: "Huntress",
     description: "A amazon etc etc etc...",
     image: require("../../assets/img/characters/Amazon.jpg"),
   },
+  {
+    name: "Bloodmage",
+    class: "Witch",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Bloodmage.webp"),
+  },
+  {
+    name: "Chronomancer",
+    class: "Sorceress",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Chronomancer.webp"),
+  },
+  {
+    name: "Gemling Legionnaire",
+    class: "Mercenary",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/gemling.webp"),
+  },
+  {
+    name: "Infernalist",
+    class: "Witch",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/infernalist.webp"),
+  },
+  {
+    name: "Invoker",
+    class: "Monk",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/invoker.webp"),
+  },
+  {
+    name: "Lich",
+    class: "Witch",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Lich.png"),
+  },
+  {
+    name: "Ritualist",
+    class: "Huntress",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Primalist.png"),
+  },
+  {
+    name: "Smith of Kitava",
+    class: "Warrior",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/SmithofKitava.png"),
+  },
+  {
+    name: "Stormweaver",
+    class: "Sorceress",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Stormweaver.webp"),
+  },
+  {
+    name: "Titan",
+    class: "Warrior",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/titan.webp"),
+  },
+  {
+    name: "Warbringer",
+    class: "Warrior",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Warbringer.webp"),
+  },
+  {
+    name: "Witch Hunter",
+    class: "Mercenary",
+    description: "A amazon etc etc etc...",
+    image: require("../../assets/img/characters/Witch Hunter.webp"),
+  },
 ];
 
 export const AscendanciesScreen: React.FC = () => {
   const [search, setSearch] = useState("");
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
+  const [selectedClass, setSelectedClass] = useState<string>("");
 
-  const filteredAscendancies = ascendancies.filter((ascendancy) =>
-    ascendancy.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredAscendancies = ascendancies.filter((ascendancy) => {
+    const matchesName = ascendancy.name.toLowerCase().includes(search.toLowerCase());
+    const matchesClass = selectedClass ? ascendancy.class === selectedClass : true;
+    return matchesName && matchesClass;
+  });
 
   return (
     <ImageBackground source={require("../../assets/img/ultimatum.jpg")} style={styles.background}>
@@ -30,6 +112,20 @@ export const AscendanciesScreen: React.FC = () => {
           value={search}
           onChangeText={(text) => setSearch(text)}
         />
+
+        <Picker
+          selectedValue={selectedClass}
+          style={styles.picker}
+          onValueChange={(itemValue) => setSelectedClass(itemValue)}
+        >
+          <Picker.Item label="Todas as Classes" value="" />
+          <Picker.Item label="Huntress" value="Huntress" />
+          <Picker.Item label="Witch" value="Witch" />
+          <Picker.Item label="Monk" value="Monk" />
+          <Picker.Item label="Warrior" value="Warrior" />
+          <Picker.Item label="Sorceress" value="Sorceress" />
+          <Picker.Item label="Mercenary" value="Mercenary" />
+        </Picker>
 
         <FlatList
           data={filteredAscendancies}
@@ -86,6 +182,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 16,
   },
+  picker: {
+    width: "100%",
+    backgroundColor: "#333",
+    color: "#fff",
+    marginBottom: 16,
+    borderRadius: 10,
+  },
   listContainer: {
     flexGrow: 1,
   },
@@ -100,7 +203,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   expandedCard: {
-    flexDirection: "column", 
+    flexDirection: "column",
     alignItems: "flex-start",
     padding: 15,
   },
@@ -128,12 +231,12 @@ const styles = StyleSheet.create({
     color: "#aaa",
     fontSize: 12,
     flexWrap: "wrap",
-    maxHeight: 40, 
+    maxHeight: 40,
     overflow: "hidden",
   },
   expandedDescription: {
-    maxHeight: 330, 
-    fontSize: 14, 
+    maxHeight: 330,
+    fontSize: 14,
   },
 });
 
